@@ -46,7 +46,7 @@
 
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
 
-                    <li><a href="/marketingcustomer/profile/{{ Auth::id() }}"> Tài khoản</a></li>
+                    <li><a href="/profile/{{ Auth::id() }}"> Tài khoản</a></li>
 
                     <li>
 

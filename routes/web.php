@@ -348,6 +348,9 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::post('profile/{iduser}', ['uses' =>'ProfileController@show']);
 
+	Route::get('profile/update/{iduser}', ['uses' =>'ProfileController@update']);
+	Route::post('profile/update/{iduser}', ['uses' =>'ProfileController@update']);
+
 	Route::get('profile/changepassword/{iduser}', ['uses' =>'ProfileController@changepassword']);
 
 	Route::post('profile/changepassword/{iduser}', ['uses' =>'ProfileController@changepassword']);

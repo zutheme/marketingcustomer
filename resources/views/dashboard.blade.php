@@ -80,7 +80,7 @@
 
             <div class="navbar nav_title" style="border: 0;">
 
-              <a href="/marketingcustomer" class="site_title"><i class="fa fa-paw"></i> <span>MGK GROUP</span></a>
+              <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>MGK GROUP</span></a>
 
             </div>
 
@@ -108,7 +108,7 @@
 
               <div class="profile_pic">
 
-                <a href="/marketingcustomer/profile/{{ Auth::id() }}"><img src="{{ asset($url_avatar) }}" alt="..." class="img-circle profile_img"></a>
+                <a href="/profile/{{ Auth::id() }}"><img src="{{ asset($url_avatar) }}" alt="..." class="img-circle profile_img"></a>
 
               </div>
 
@@ -118,7 +118,7 @@
 
                  @if (Auth::check())
 
-                    <h2><a href="/marketingcustomer/profile/{{ Auth::id() }}">{{ Auth::user()->name }}</a></h2> 
+                    <h2><a href="/profile/{{ Auth::id() }}">{{ Auth::user()->name }}</a></h2> 
 
                 @endif
 
