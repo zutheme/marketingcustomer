@@ -15,12 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $_namecattype="website";
-        $rs_catbytype = DB::select('call ListAllCatByTypeProcedure(?)',array($_namecattype));
-        $catbytypes = json_decode(json_encode($rs_catbytype), true);
         $result = DB::select('call ListCategoryProcedure()');
         $categories = json_decode(json_encode($result), true);
-        return view('admin.category.index',compact('categories','catbytypes'));
+        return view('admin.category.index',compact('categories'));
     }
 
     /**

@@ -80,15 +80,27 @@
 
             <div class="navbar nav_title" style="border: 0;">
 
-              <a href="http://api.thammyvienthienkhue.com.vn" class="site_title"><i class="fa fa-paw"></i> <span>MGK GROUP</span></a>
+              <a href="/marketingcustomer" class="site_title"><i class="fa fa-paw"></i> <span>MGK GROUP</span></a>
 
             </div>
 
 
 
             <div class="clearfix"></div>
-
-
+            <?php foreach($profile as $row) {
+                  $idprofile = $row["idprofile"];
+                  $firstname = $row["firstname"];
+                  $lastname = $row['lastname'];
+                  $middlename = $row['middlename'];
+                  $sel_sex = $row['sex'];
+                  $birthday = $row['birthday'];
+                  $address = $row['address'];
+                  $mobile = $row['mobile'];
+                  $url_avatar = $row['url_avatar'];
+                  //echo "<script> var birthday='".$birthday."'</script>";
+               }
+               $url_avartar_sex = ($sel_sex == 0) ? 'dashboard/production/images/avatar/avatar-female.jpg' : 'dashboard/production/images/avatar/avatar-male.jpg';
+               $url_avatar = (strlen($url_avatar) > 0) ? $url_avatar : $url_avartar_sex; ?>
 
             <!-- menu profile quick info -->
 
@@ -96,7 +108,7 @@
 
               <div class="profile_pic">
 
-                <a href="http://api.thammyvienthienkhue.com.vn/profile/{{ Auth::id() }}"><img src="{{ asset($url_avatar) }}" alt="..." class="img-circle profile_img"></a>
+                <a href="/marketingcustomer/profile/{{ Auth::id() }}"><img src="{{ asset($url_avatar) }}" alt="..." class="img-circle profile_img"></a>
 
               </div>
 
@@ -104,9 +116,9 @@
 
                 <span>Welcome,</span>
 
-                @if (Auth::check())
+                 @if (Auth::check())
 
-                    <h2><a href="http://api.thammyvienthienkhue.com.vn/profile/{{ Auth::id() }}">{{ Auth::user()->name }}</a></h2> 
+                    <h2><a href="/marketingcustomer/profile/{{ Auth::id() }}">{{ Auth::user()->name }}</a></h2> 
 
                 @endif
 
@@ -120,11 +132,11 @@
 
             <br />
 
-           
+
 
             <!-- sidebar menu -->
 
-            @include('sidebar');
+            @include('admin.sidebar');
 
             <!-- /sidebar menu -->
 
@@ -170,7 +182,7 @@
 
         <!-- top navigation -->
 
-        @include('topnav');
+        @include('admin.topnav');
 
         <!-- /top navigation -->
 

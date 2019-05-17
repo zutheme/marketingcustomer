@@ -18,11 +18,12 @@ class AduserController extends Controller
      */
     public function index()
     {
-        $_namecattype="website";
-        $rs_catbytype = DB::select('call ListAllCatByTypeProcedure(?)',array($_namecattype));
-        $catbytypes = json_decode(json_encode($rs_catbytype), true);
+        //$_namecattype="website";
+        //$rs_catbytype = DB::select('call ListAllCatByTypeProcedure(?)',array($_namecattype));
+        //$catbytypes = json_decode(json_encode($rs_catbytype), true);
         $users = User::all()->toArray();
-        return view('admin.aduser.index',compact('users','catbytypes'));
+        //return view('admin.aduser.index',compact('users','catbytypes'));
+        return view('admin.aduser.index',compact('users'));
     }
 
     /**

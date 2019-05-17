@@ -55,16 +55,14 @@ class ProfileController extends Controller
     public function show($iduser)
     {
         try {
-            $_namecattype="website";
-            $rs_catbytype = DB::select('call ListAllCatByTypeProcedure(?)',array($_namecattype));
-            $catbytypes = json_decode(json_encode($rs_catbytype), true);
+            $qr_select_profile = DB::select('call SelectProfileProcedure(?)',array($iduser));
+            $profile = json_decode(json_encode($qr_select_profile), true);
+            return view('profile.show',compact('profile','iduser'));
         } catch (\Illuminate\Database\QueryException $ex) {
             $errors = new MessageBag(['errorlogin' => $ex->getMessage()]);
             return redirect()->route('profile.show')->with('error',$errors);
         }
-        $qr_select_profile = DB::select('call SelectProfileProcedure(?)',array($iduser));
-        $profile = json_decode(json_encode($qr_select_profile), true);
-        return view('profile.show',compact('profile','catbytypes','iduser'));
+        
     }
 
     /**
@@ -88,9 +86,7 @@ class ProfileController extends Controller
     public function update(Request $request, $iduser)
     {
         try {
-            $_namecattype="website";
-            $rs_catbytype = DB::select('call ListAllCatByTypeProcedure(?)',array($_namecattype));
-            $catbytypes = json_decode(json_encode($rs_catbytype), true);
+            
             //update profile
             $_idprofile = $request->get('idprofile');
             $_firstname = $request->get('firstname');
@@ -108,8 +104,7 @@ class ProfileController extends Controller
         }
         $qr_select_profile = DB::select('call SelectProfileProcedure(?)',array($iduser));
         $profile = json_decode(json_encode($qr_select_profile), true);
-        return view('profile.show',compact('profile','catbytypes','iduser'));
-        //return redirect()->route('profile.show')->with(compact('profile','catbytypes'));
+        return view('profile.show',compact('profile','iduser'));
     }
 
     /**
@@ -123,9 +118,6 @@ class ProfileController extends Controller
         //
     }
     public function changepassword(Request $request,$iduser="1"){      
-        $_namecattype="website";
-        $rs_catbytype = DB::select('call ListAllCatByTypeProcedure(?)',array($_namecattype));
-        $catbytypes = json_decode(json_encode($rs_catbytype), true);
         $qr_select_profile = DB::select('call SelectProfileProcedure(?)',array($iduser));
         $profile = json_decode(json_encode($qr_select_profile), true);
         //update profile

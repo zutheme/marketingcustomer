@@ -358,7 +358,7 @@ return [
 
 
 
-            'database' => env('DB_DATABASE', 'api_marketing'),
+            'database' => env('DB_DATABASE', 'marketingcustomer'),
 
 
 
@@ -366,7 +366,7 @@ return [
 
 
 
-            'username' => env('DB_USERNAME', 'api_marketing'),
+            'username' => env('DB_USERNAME', 'root'),
 
 
 
@@ -374,7 +374,7 @@ return [
 
 
 
-            'password' => env('DB_PASSWORD', 'mgkgroup2019'),
+            'password' => env('DB_PASSWORD', ''),
 
 
 

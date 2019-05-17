@@ -21,7 +21,6 @@
 @stop
 @section('content')
    <!-- page content --> 
-
             <?php foreach($profile as $row) {
                   $idprofile = $row["idprofile"];
                   $firstname = $row["firstname"];
