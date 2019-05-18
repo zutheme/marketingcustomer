@@ -83,9 +83,6 @@
               <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>MGK GROUP</span></a>
 
             </div>
-
-
-
             <div class="clearfix"></div>
             <?php foreach($profile as $row) {
                   $idprofile = $row["idprofile"];
@@ -100,8 +97,8 @@
                   //echo "<script> var birthday='".$birthday."'</script>";
                }
                $url_avartar_sex = ($sel_sex == 0) ? 'dashboard/production/images/avatar/avatar-female.jpg' : 'dashboard/production/images/avatar/avatar-male.jpg';
-               $url_avatar = (strlen($url_avatar) > 0) ? $url_avatar : $url_avartar_sex; ?>
-
+               $url_avatar = (strlen($url_avatar) > 0) ? $url_avatar : $url_avartar_sex; 
+               //$name = (strlen($firstname) > 0) ? $firstname : $url_avartar_sex; ?>
             <!-- menu profile quick info -->
 
             <div class="profile clearfix">

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use App\Files;
 use File;
+use App\profile;
 class CustomerRegController extends Controller
 {
     /**
@@ -64,9 +65,10 @@ class CustomerRegController extends Controller
      */
     public function show($idimppost)
     {
-        $_namecattype="website";
-        $rs_catbytype = DB::select('call ListAllCatByTypeProcedure(?)',array($_namecattype));
-        $catbytypes = json_decode(json_encode($rs_catbytype), true);
+        $iduser = Auth::id();
+        $qr_select_profile = DB::select('call SelectProfileProcedure(?)',array($iduser));
+        $profile = json_decode(json_encode($qr_select_profile), true);
+
         $rsdetailInteractive = DB::select('call DetailInteractive(?)',array($idimppost));
         $detailpost = json_decode(json_encode($rsdetailInteractive), true);
 
@@ -75,7 +77,7 @@ class CustomerRegController extends Controller
         $_idinter = 4;
         $rs_post_type_inter = DB::select('call ListPostTypeByIdcatProcedure(?)',array($_idinter));
         $post_type_inter = json_decode(json_encode($rs_post_type_inter), true);
-        return view('admin.customerreg.show',compact('post_type_inter','detailpost','catbytypes','activitys','idimppost'));
+        return view('admin.customerreg.show',compact('post_type_inter','detailpost','activitys','idimppost','profile'));
     }
     /**
      * Show the form for editing the specified resource.

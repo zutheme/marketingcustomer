@@ -6,6 +6,21 @@
     <link href="{{ asset('dashboard/production/css/custom.css?v=0.1.9') }}" rel="stylesheet">
 @stop
 @section('content')
+<?php foreach($profile as $row) {
+                  $idprofile = $row["idprofile"];
+                  $firstname = $row["firstname"];
+                  $lastname = $row['lastname'];
+                  $middlename = $row['middlename'];
+                  $sel_sex = $row['sex'];
+                  $birthday = $row['birthday'];
+                  $address = $row['address'];
+                  $mobile = $row['mobile'];
+                  $url_avatar = $row['url_avatar'];
+                  //echo "<script> var birthday='".$birthday."'</script>";
+               }
+               $url_avartar_sex = ($sel_sex == 0) ? 'dashboard/production/images/avatar/avatar-female.jpg' : 'dashboard/production/images/avatar/avatar-male.jpg';
+               $url_avatar = (strlen($url_avatar) > 0) ? $url_avatar : $url_avartar_sex; 
+               //$name = (strlen($firstname) > 0) ? $firstname : $url_avartar_sex; ?>
 <?php $_sel_idposttype = 0; ?>
  <!-- page content -->       
             <div class="page-title">
@@ -97,14 +112,14 @@
                            @if(isset($activitys))
                               @foreach($activitys as $row)
                               <li>
-                                <img src="{{ asset('dashboard/production/images/avatar/avatar3.jpg') }}" class="avatar" alt="Avatar">
+                                <img src="{{ asset($row['url_avatar']) }}" class="avatar" alt="Avatar">
                                 <div class="message_wrapper comment">
-                                  <h4 class="heading">Desmond Davison</h4>
+                                  <h4 class="heading">{{ $row['lastname']." ".$row['middlename']." ".$row['firstname'] }}</h4>
                                   <blockquote class="message">{{ $row['body']}}</blockquote>
                                   <br />
                                   <p class="url">
                                     <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                    <a href="#"><i class="fa fa-paperclip"></i> {{ $row['created_at'] }} </a>
+                                    <a href="#">{!! isset($row['icon']) ? $row['icon']:'<i class="fa fa-comments-o"></i>' !!}</i> {{ $row['created_at'] }} </a>
                                   </p>
                                 </div>
                               </li>
@@ -130,7 +145,7 @@
                           <div class="x_content">
                             <ul class="messages">
                               <li>
-                                <img src="{{ asset('dashboard/production/images/img.jpg') }}" class="avatar" alt="Avatar">
+                                <img src="{{ asset($url_avatar) }}" class="avatar" alt="Avatar">
                                 <div class="message_wrapper comment">
                                   <textarea name="body" class="resizable_textarea form-control" placeholder="Ghi chú"></textarea>
                                 </div>
@@ -144,7 +159,7 @@
                               {{ $errors }}
                             @endif
                         </div>
-                        </form>                 
+                      </form>                 
                         <!-- end of user messages -->
                       </div>
 
