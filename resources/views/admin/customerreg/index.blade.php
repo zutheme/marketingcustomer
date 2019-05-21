@@ -299,7 +299,7 @@
 
                       <td>{{ $row['email'] }}</td>
 
-                     {{--  <td>{{ $row['body'] }}</td> --}}
+                     {{--  <td>{{ $row['address_reg'] }}</td> --}}
 
                       <td>{{ $row['address_reg'] }}</td>
 
@@ -307,7 +307,7 @@
 
                         <input type="hidden" name="idpost_row" value="{{ $row['idpost'] }}">
 
-                        <a href="{{ action('Admin\CustomerRegController@show',$row['idimppost']) }}" class="info-number"><i class="fa fa-envelope-o"></i><span class="badge bg-green">6</span></a>
+                        <a href="{{ action('Admin\CustomerRegController@show',$row['idimppost']) }}" class="info-number"><i class="fa fa-envelope-o"></i><span class="badge bg-green">{{ $row['count_interactive'] }}</span></a>
 
                      </td>		
 
